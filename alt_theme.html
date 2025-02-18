@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <a href="https://scmcqueen.github.io/si649_hw/reviews_by_char.csv">Data</a>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"title": {"anchor": "start", "font": "Sour Gummy", "fontSize": 24, "subtitleFont": "Sour Gummy", "subtitleFontSize": 20, "color": "#000000", "offset": 20}, "axisX": {"labelFont": "Sour Gummy", "labelFontSize": 16, "labelColor": "#000000", "domain": true, "domainColor": "#000000", "domainWidth": 1, "ticks": true, "titleFont": "Sour Gummy", "titleFontSize": 18, "titleColor": "#000000", "labelPadding": 10, "grid": true}, "axisY": {"labelFont": "Sour Gummy", "labelFontSize": 16, "labelColor": "#000000", "domain": true, "ticks": true, "titleFont": "Sour Gummy", "titleFontSize": 18, "titleColor": "#000000", "titleAngle": 0, "titleY": -10, "titleAnchor": "start", "labelPadding": 10, "grid": true}, "legend": {"titleFont": "Sour Gummy", "titleFontSize": 18, "titleColor": "#000000", "labelFont": "Sour Gummy", "labelFontSize": 14, "labelColor": "#000000"}, "header": {"labelFont": "Sour Gummy", "labelFontSize": 18, "labelColor": "#000000", "titleFont": "Sour Gummy", "titleFontSize": 18, "titleColor": "#000000"}, "background": null, "view": {"stroke": "transparent"}, "range": {"category": ["#E8AEB7", "#B8E1FF", "#A9FFF7", "#94FBAB", "#82ABA1", "#202C39"], "ramp": ["#1f2b37", "#3a4b5b", "#586e81", "#7792a9", "#97b9d3", "#b8e1ff"], "diverging": ["#a8fff6", "#b8f2cb", "#d1e1ad", "#FFFFFF", "#e6cea2", "#efbca8", "#e9afb8"]}, "grid": {"color": "#d2d2d2", "strokeWidth": 1}, "area": {"fill": "category"}, "line": {"strokeWidth": 2, "color": "category"}, "point": {"filled": true, "size": 100, "fill": "category"}, "text": {"font": "Sour Gummy", "fontSize": 16, "color": "#000000"}, "bar": {"filled": true, "color": "#E8AEB7"}, "boxplot": {"color": "#E8AEB7", "extent": 1.5}}, "data": {"name": "data-6fb30007b23a0ee5bfc1c7917824975b"}, "mark": {"type": "point"}, "encoding": {"color": {"field": "percentage", "legend": {"gradientLength": 250, "title": "Percent"}, "scale": {"range": "ramp"}, "type": "quantitative"}, "tooltip": [{"field": "character", "type": "nominal"}, {"field": "num_ratings", "type": "quantitative"}, {"field": "percentage", "format": ".2%", "type": "quantitative"}], "x": {"axis": {"values": [800, 810, 820, 830, 840, 850]}, "field": "num_ratings", "scale": {"domain": [800, 850]}, "title": "Number of Ratings", "type": "quantitative"}, "y": {"axis": {"format": ".1f", "values": [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]}, "field": "percentage", "scale": {"domain": [0.0, 1.0]}, "title": "Percent of Favorable Ratings", "type": "quantitative"}}, "height": 250, "title": "Favorable Ratings by Number of Ratings", "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-6fb30007b23a0ee5bfc1c7917824975b": [{"character": "Anakin Skywalker", "num_ratings": 823, "percentage": 0.6245443499392467}, {"character": "Boba Fett", "num_ratings": 812, "percentage": 0.3583743842364532}, {"character": "C-3P0", "num_ratings": 827, "percentage": 0.8500604594921403}, {"character": "Darth Vader", "num_ratings": 826, "percentage": 0.5823244552058111}, {"character": "Emperor Palpatine", "num_ratings": 814, "percentage": 0.3108108108108108}, {"character": "Han Solo", "num_ratings": 829, "percentage": 0.9179734620024126}, {"character": "Jar Jar Binks", "num_ratings": 821, "percentage": 0.29476248477466505}, {"character": "Lando Calrissian", "num_ratings": 820, "percentage": 0.4451219512195122}, {"character": "Luke Skywalker", "num_ratings": 831, "percentage": 0.927797833935018}, {"character": "Obi Wan Kenobi", "num_ratings": 825, "percentage": 0.9090909090909091}, {"character": "Padme Amidala", "num_ratings": 814, "percentage": 0.4312039312039312}, {"character": "Princess Leia Organa", "num_ratings": 831, "percentage": 0.910950661853189}, {"character": "R2 D2", "num_ratings": 830, "percentage": 0.9}, {"character": "Yoda", "num_ratings": 826, "percentage": 0.9067796610169492}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
